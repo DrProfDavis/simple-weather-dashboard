@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>Document</title>
 </head>
 <body>
-    <div class="box has-background-dark m-5">
+    <div class="box has-background-grey-dark m-5">
         <div class="tile is-ancestor">
             <div class="tile is-vertical">
                 <div class="tile is-parent">
-                    <article class="tile is-child notification is-danger has-text-centered">
+                    <article class="tile is-child notification has-text-centered">
                         <p class="title">Weather or Not</p>
                     </article>
                 </div>
@@ -25,14 +25,74 @@
                         </article>
                     </div>        
                     <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification is-primary">
-                            <p class="title">Austin, Texas</p>
-                            <p class="subtitle">Some weather stuff</p>
+                        <article class="tile notification">
+                            <div class="tile is-vertical">
+                                <div class="tile is-parent notification is-primary has-text-centered box">
+                                    <div class="tile is-child">
+                                        <p class="title">Austin, Texas</p>
+                                    </div>
+                                    <div class="tile is-child">
+                                        <p class="title">Date</p>
+                                    </div>
+                                </div>
+                                <div class="tile">
+                                    <div class="tile is-parent notification is-danger has-text-centered mx-3 mb-1">
+                                        <div class="tile is-child">
+                                            <p class="title">Temp</p>
+                                            <p class="subtitle">It's Hot</p>
+                                        </div>
+                                    </div>
+                                    <div class="tile is-parent notification is-success has-text-centered mx-3 mb-1">
+                                        <div class="tile is-child">
+                                            <p class="title">Wind</p>
+                                            <p class="subtitle">It's Windy</p>
+                                        </div>
+                                    </div>
+                                    <div class="tile is-parent notification is-warning has-text-centered mx-3 mb-1">
+                                        <div class="tile is-child">
+                                            <p class="title">Humidity</p>
+                                            <p class="subtitle">It's Dry</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
-                        <article class="tile is-child notification is-warning">
-                            <p class="title">Five Day Forecast</p>
-                            <p class="subtitle">Five days worth of weather</p>
-                        </article>
+                        <div class="tile notification is-vertical">
+                            <div class="tile">
+                                <div class="tile notification is-primary has-text-centered mx-3 my-1">
+                                    <article class="tile is-child">
+                                        <p class="title">Five Day Forecast</p>
+                                    </article>
+                                </div>
+                                <div class="tile notification is-warning has-text-centered mx-3 my-1">
+                                    <article class="tile is-child">
+                                        <p class="title">Monday</p>
+                                    </article>
+                                </div>
+                                <div class="tile notification is-warning has-text-centered mx-3 my-1">
+                                    <article class="tile is-child">
+                                        <p class="title">Tuesday</p>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="tile">
+                                <div class="tile notification is-warning has-text-centered mx-3 my-1">
+                                    <article class="tile is-child">
+                                        <p class="title">Wednesday</p>
+                                    </article>
+                                </div>
+                                <div class="tile notification is-warning has-text-centered mx-3 my-1">
+                                    <article class="tile is-child">
+                                        <p class="title">Thursday</p>
+                                    </article>
+                                </div>
+                                <div class="tile notification is-warning has-text-centered mx-3 my-1">
+                                    <article class="tile is-child">
+                                        <p class="title">Friday</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
