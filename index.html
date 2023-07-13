@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-white">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="box has-background-dark m-5">
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical">
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-danger has-text-centered">
+                        <p class="title">Weather or Not</p>
+                    </article>
+                </div>
+                <div class="tile">
+                    <div class="tile is-parent is-4">
+                        <article class="tile is-child notification is-info">
+                            <p class="title">Search</p>
+                            <p class="subtitle">The results</p>
+                        </article>
+                    </div>        
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification is-primary">
+                            <p class="title">Austin, Texas</p>
+                            <p class="subtitle">Some weather stuff</p>
+                        </article>
+                        <article class="tile is-child notification is-warning">
+                            <p class="title">Five Day Forecast</p>
+                            <p class="subtitle">Five days worth of weather</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
