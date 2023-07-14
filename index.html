@@ -21,7 +21,11 @@
                     <div class="tile is-parent is-4">
                         <article class="tile is-child notification is-info">
                             <p class="title">Search</p>
-                            <p class="subtitle">The results</p>
+                            <div class="input">
+                                <input type="text" class="inputValue">
+                                <input type="submit" value="submit" class="button">
+                            </div>
+                            <p class="subtitle searchResults">The results</p>
                         </article>
                     </div>        
                     <div class="tile is-parent is-vertical">
@@ -39,18 +43,21 @@
                                     <div class="tile is-parent notification is-danger has-text-centered mx-3 mb-1">
                                         <div class="tile is-child">
                                             <p class="title">Temp</p>
+                                            <div id="temp"></div>
                                             <p class="subtitle">It's Hot</p>
                                         </div>
                                     </div>
                                     <div class="tile is-parent notification is-success has-text-centered mx-3 mb-1">
                                         <div class="tile is-child">
                                             <p class="title">Wind</p>
+                                            <div id="wind-speed"></div>
                                             <p class="subtitle">It's Windy</p>
                                         </div>
                                     </div>
                                     <div class="tile is-parent notification is-warning has-text-centered mx-3 mb-1">
                                         <div class="tile is-child">
                                             <p class="title">Humidity</p>
+                                            <div id="humidity"></div>
                                             <p class="subtitle">It's Dry</p>
                                         </div>
                                     </div>
@@ -98,5 +105,6 @@
             </div>
         </div>
     </div>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
