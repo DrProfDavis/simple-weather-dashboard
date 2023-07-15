@@ -44,7 +44,7 @@ function getWeatherApi(cityName,cityState,lat,lon) {
         let wind = document.getElementById('wind-speed');
         console.log("Current weather results content:")
         console.log(dataWeather)
-        name.innerHTML = cityName+" "+cityState;
+        name.innerHTML = cityName+", "+cityState;
         tempCurrent.innerHTML = "Current: " + Math.trunc((dataWeather.main.temp - 273.15) * 9/5 + 32) + " F";
         tempLow.innerHTML = "Low: " + Math.trunc((dataWeather.main.temp_min - 273.15) * 9/5 + 32) + " F";
         tempHigh.innerHTML = "High: " + Math.trunc((dataWeather.main.temp_max - 273.15) * 9/5 + 32) + " F";
@@ -74,30 +74,50 @@ function get5DayApi(lat,lon) {
         dayOneMonth = JSON.stringify(dayOne.getMonth()+1);
         dayOneDate = JSON.stringify(dayOne.getDate());
         dayOneInfo.innerHTML = dayOneMonth+"-"+dayOneDate;
+        let dayOneTemp = document.getElementById('firstDayTemp');
+        dayOneTemp.innerHTML = "Temp: " + Math.trunc(((data5Day.list[7].main.temp) - 273.15) * 9/5 + 32) + " F";
+        let dayOneHumid = document.getElementById('firstDayHumid');
+        dayOneHumid.innerHTML = "Humidity: " + data5Day.list[7].main.humidity + "%";
 
         let dayTwoInfo = document.getElementById('secondDay');
         dayTwo = new Date(data5Day.list[15].dt*1000);
         dayTwoMonth = JSON.stringify(dayTwo.getMonth()+1);
         dayTwoDate = JSON.stringify(dayTwo.getDate());
         dayTwoInfo.innerHTML = dayTwoMonth+"-"+dayTwoDate;
+        let dayTwoTemp = document.getElementById('secondDayTemp');
+        dayTwoTemp.innerHTML = "Temp: " + Math.trunc(((data5Day.list[15].main.temp) - 273.15) * 9/5 + 32) + " F";
+        let dayTwoHumid = document.getElementById('secondDayHumid');
+        dayTwoHumid.innerHTML = "Humidity: " + data5Day.list[15].main.humidity + "%";
 
         let dayThreeInfo = document.getElementById('thirdDay');
         dayThree = new Date(data5Day.list[23].dt*1000);
         dayThreeMonth = JSON.stringify(dayThree.getMonth()+1);
         dayThreeDate = JSON.stringify(dayThree.getDate());
         dayThreeInfo.innerHTML = dayThreeMonth+"-"+dayThreeDate;
+        let dayThreeTemp = document.getElementById('thirdDayTemp');
+        dayThreeTemp.innerHTML = "Temp: " + Math.trunc(((data5Day.list[23].main.temp) - 273.15) * 9/5 + 32) + " F";
+        let dayThreeHumid = document.getElementById('thirdDayHumid');
+        dayThreeHumid.innerHTML = "Humidity: " + data5Day.list[23].main.humidity + "%";
 
         let dayFourInfo = document.getElementById('fourthDay');
         dayFour = new Date(data5Day.list[31].dt*1000);
         dayFourMonth = JSON.stringify(dayFour.getMonth()+1);
         dayFourDate = JSON.stringify(dayFour.getDate());
         dayFourInfo.innerHTML = dayFourMonth+"-"+dayFourDate;
+        let dayFourTemp = document.getElementById('fourthDayTemp');
+        dayFourTemp.innerHTML = "Temp: " + Math.trunc(((data5Day.list[31].main.temp) - 273.15) * 9/5 + 32) + " F";
+        let dayFourHumid = document.getElementById('fourthDayHumid');
+        dayFourHumid.innerHTML = "Humidity: " + data5Day.list[31].main.humidity + "%";
 
         let dayFiveInfo = document.getElementById('fifthDay');
         dayFive = new Date(data5Day.list[39].dt*1000);
         dayFiveMonth = JSON.stringify(dayFive.getMonth()+1);
         dayFiveDate = JSON.stringify(dayFive.getDate());
         dayFiveInfo.innerHTML = dayFiveMonth+"-"+dayFiveDate;
+        let dayFiveTemp = document.getElementById('fifthDayTemp');
+        dayFiveTemp.innerHTML = "Temp: " + Math.trunc(((data5Day.list[39].main.temp) - 273.15) * 9/5 + 32) + " F";
+        let dayFiveHumid = document.getElementById('fifthDayHumid');
+        dayFiveHumid.innerHTML = "Humidity: " + data5Day.list[39].main.humidity + "%";
         
         // name.innerHTML = cityName;
         // temp.innerHTML = Math.trunc((data5Day.main.temp - 273.15) * 9/5 + 32) + " F";
