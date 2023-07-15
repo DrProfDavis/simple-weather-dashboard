@@ -1,12 +1,8 @@
 let button = document.querySelector('.button');
 let inputValue = document.querySelector('.inputValue');
-let temp = document.querySelector('.temp');
-let humidity = document.querySelector('.humidity');
-let windSpeed = document.querySelector('.wind-speed');
 
 let geoResultsArray = [];
 let weatherResultsArray = [];
-
 
 button.addEventListener('click', getGeoApi)
 
@@ -21,54 +17,91 @@ function getGeoApi() {
             console.log(dataGeo)
             console.log("Current dataGeo[0] content:")
             console.log(dataGeo[0].name)
+            console.log(dataGeo[0].state)
             console.log(dataGeo[0].lat)
             console.log(dataGeo[0].lon)
             var cityName = dataGeo[0].name
+            var cityState = dataGeo[0].state
             var lat = dataGeo[0].lat
             var lon = dataGeo[0].lon
-            getWeatherApi(cityName,lat,lon);
+            getWeatherApi(cityName,cityState,lat,lon);
+            get5DayApi(lat,lon);
     })
 }
 
         // Weather Api Fetch
-function getWeatherApi(cityName,lat,lon) {
+function getWeatherApi(cityName,cityState,lat,lon) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0dff19434666c0633032ec00e05dfa2a`)
     .then(function (responseWeather) {
         return responseWeather.json();
     })
     .then(function (dataWeather) {
         let name = document.getElementById('name');
-        console.log("Current weatherResultsArray content:")
+        let tempCurrent = document.getElementById('tempCurrent');
+        let tempLow = document.getElementById('tempLow');
+        let tempHigh = document.getElementById('tempHigh');
+        let humidity = document.getElementById('humidity');
+        let wind = document.getElementById('wind-speed');
+        console.log("Current weather results content:")
         console.log(dataWeather)
-        name.innerHTML = cityName;
+        name.innerHTML = cityName+" "+cityState;
+        tempCurrent.innerHTML = "Current: " + Math.trunc((dataWeather.main.temp - 273.15) * 9/5 + 32) + " F";
+        tempLow.innerHTML = "Low: " + Math.trunc((dataWeather.main.temp_min - 273.15) * 9/5 + 32) + " F";
+        tempHigh.innerHTML = "High: " + Math.trunc((dataWeather.main.temp_max - 273.15) * 9/5 + 32) + " F";
+        humidity.innerHTML = dataWeather.main.humidity + "%";
+        wind.innerHTML = dataWeather.wind.speed + " mph";
     })
 }
 
+// 5 Day Forecast Api Fetch
+function get5DayApi(lat,lon) {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=0dff19434666c0633032ec00e05dfa2a`)
+    .then(function (response5Day) {
+        return response5Day.json();
+    })
+    .then(function (data5Day) {
+        // let name = document.getElementById('name');
+        // let temp = document.getElementById('temp');
+        // let humidity = document.getElementById('humidity');
+        // let wind = document.getElementById('wind-speed');
+        console.log("Current 5 Day content:")
+        console.log(data5Day)
 
-// DISPLAY SEARCH RESULTS
-// ON CLICK - SET lat AND lon FOR NEXT API
+        // Set the dates of each tile
 
-    // Weather Api
-//     console.log("Current geoResultsArray content:")
-//     console.log(geoResultsArray)
-//     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=&appid=0dff19434666c0633032ec00e05dfa2a`)
-//     .then(function(responseWeather) {
-//         return responseWeather.json();
-//     })
-//     .then(function (dataWeather){
-//         console.log(dataWeather)
-//     })
-// })
+        let dayOneInfo = document.getElementById('firstDay');
+        dayOne = new Date(data5Day.list[7].dt*1000);
+        dayOneMonth = JSON.stringify(dayOne.getMonth()+1);
+        dayOneDate = JSON.stringify(dayOne.getDate());
+        dayOneInfo.innerHTML = dayOneMonth+"-"+dayOneDate;
 
+        let dayTwoInfo = document.getElementById('secondDay');
+        dayTwo = new Date(data5Day.list[15].dt*1000);
+        dayTwoMonth = JSON.stringify(dayTwo.getMonth()+1);
+        dayTwoDate = JSON.stringify(dayTwo.getDate());
+        dayTwoInfo.innerHTML = dayTwoMonth+"-"+dayTwoDate;
 
-// fetch('https://api.github.com/orgs/twitter/repos')
-//     .then(function (response) {
-//     return response.json();
-//     })
-//     .then(function (data) {
-//     console.log(data);
-//     console.log('Twitter Repositories: Names only \n----------');
-//     for (var i = 0; i < data.length; i++) {
-//         console.log(data[i].name);
-//     }
-// });
+        let dayThreeInfo = document.getElementById('thirdDay');
+        dayThree = new Date(data5Day.list[23].dt*1000);
+        dayThreeMonth = JSON.stringify(dayThree.getMonth()+1);
+        dayThreeDate = JSON.stringify(dayThree.getDate());
+        dayThreeInfo.innerHTML = dayThreeMonth+"-"+dayThreeDate;
+
+        let dayFourInfo = document.getElementById('fourthDay');
+        dayFour = new Date(data5Day.list[31].dt*1000);
+        dayFourMonth = JSON.stringify(dayFour.getMonth()+1);
+        dayFourDate = JSON.stringify(dayFour.getDate());
+        dayFourInfo.innerHTML = dayFourMonth+"-"+dayFourDate;
+
+        let dayFiveInfo = document.getElementById('fifthDay');
+        dayFive = new Date(data5Day.list[39].dt*1000);
+        dayFiveMonth = JSON.stringify(dayFive.getMonth()+1);
+        dayFiveDate = JSON.stringify(dayFive.getDate());
+        dayFiveInfo.innerHTML = dayFiveMonth+"-"+dayFiveDate;
+        
+        // name.innerHTML = cityName;
+        // temp.innerHTML = Math.trunc((data5Day.main.temp - 273.15) * 9/5 + 32) + " F";
+        // humidity.innerHTML = data5Day.main.humidity + "%";
+        // wind.innerHTML = data5Day.wind.speed + " mph";
+    })
+}
