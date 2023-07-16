@@ -60,15 +60,10 @@ function get5DayApi(lat,lon) {
         return response5Day.json();
     })
     .then(function (data5Day) {
-        // let name = document.getElementById('name');
-        // let temp = document.getElementById('temp');
-        // let humidity = document.getElementById('humidity');
-        // let wind = document.getElementById('wind-speed');
         console.log("Current 5 Day content:")
         console.log(data5Day)
 
         // Set the dates of each tile
-
         let dayOneInfo = document.getElementById('firstDay');
         dayOne = new Date(data5Day.list[7].dt*1000);
         dayOneMonth = JSON.stringify(dayOne.getMonth()+1);
@@ -118,10 +113,27 @@ function get5DayApi(lat,lon) {
         dayFiveTemp.innerHTML = "Temp: " + Math.trunc(((data5Day.list[39].main.temp) - 273.15) * 9/5 + 32) + " F";
         let dayFiveHumid = document.getElementById('fifthDayHumid');
         dayFiveHumid.innerHTML = "Humidity: " + data5Day.list[39].main.humidity + "%";
-        
-        // name.innerHTML = cityName;
-        // temp.innerHTML = Math.trunc((data5Day.main.temp - 273.15) * 9/5 + 32) + " F";
-        // humidity.innerHTML = data5Day.main.humidity + "%";
-        // wind.innerHTML = data5Day.wind.speed + " mph";
     })
 }
+
+// Display Date
+const date = new Date();
+let day = date.getDate();
+let month = date.getMonth();
+let year = date.getFullYear();
+
+// Turns numbers into words
+if (month == 0){ wordMonth = "January"}
+if (month == 1){ wordMonth = "February"}
+if (month == 2){ wordMonth = "March"}
+if (month == 3){ wordMonth = "April"}
+if (month == 4){ wordMonth = "May"}
+if (month == 5){ wordMonth = "June"}
+if (month == 6){ wordMonth = "July"}
+if (month == 7){ wordMonth = "August"}
+if (month == 8){ wordMonth = "September"}
+if (month == 9){ wordMonth = "October"}
+if (month == 10){ wordMonth = "November"}
+if (month == 11){ wordMonth = "December"}
+
+currentDate.innerText = `${wordMonth} ${day}, ${year}`;
